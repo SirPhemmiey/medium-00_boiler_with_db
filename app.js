@@ -3,8 +3,11 @@ import bodyParser from 'body-parser';
 import user from './routes/user';
 import {MongoClient} from 'mongodb';
 import {clientApiKeyValidation} from './common/authUtils';
+import dotenv from 'dotenv';
 
-const CONN_URL = 'mongodb://localhost:27017';
+dotenv.config();
+
+const CONN_URL = process.env.CONN_URL;
 let mongoClient = null;
 
 MongoClient.connect(CONN_URL,{ useNewUrlParser: true }, function (err, client) {
